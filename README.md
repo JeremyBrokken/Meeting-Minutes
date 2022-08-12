@@ -1,6 +1,6 @@
 # Meeting-Minutes
 2022 LvL6 Techtorium
-<br /><br />
+<br><br>
 
 <h1>The requirements for this application is as follows</h1>
 
@@ -13,9 +13,9 @@ Registered users able to "delete any minutes" taken by them only.
 Application to be connected with database to store and retrieve the minutes stored</pre>
 
 <h2>The application future additions include the following features:</h2>
-<p>search for minutes
-edit the minutes
-adding the images options
+<p>search for minutes<br>
+edit the minutes<br>
+adding the images options<br>
 uploading additional files along with minutes.</p>
 
 <h2>Upon finalization of the app, the app will have been through the following final check list;</h2>
