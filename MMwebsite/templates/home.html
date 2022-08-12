@@ -1,0 +1,32 @@
+<!--use template-->
+{% extends "base.html" %} <!--means = this template, be same as base.html + and can overide blocks defined inside base.html-->
+
+<!--Title-->
+{% block title %}Home{% endblock %} <!--title tab of the website-->
+
+<!--Body-->
+{% block content %}
+<h1 align="center">Note</h1>
+
+    {# Loads all current user notes if any found #}
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{note.data}}
+        <button type="button" class="close" onclick="deleteNote({{note.id}})"> {# onclick"~~" = java send data to backend, [delete note method]#}
+            <span aria-hidden="True">&times;</span>
+        </button>
+        </li>
+    {% endfor %}
+</ul>
+
+    {# Note creation area #}
+<form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    {# Button = Submit #}
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+</form>
+{% endblock %}

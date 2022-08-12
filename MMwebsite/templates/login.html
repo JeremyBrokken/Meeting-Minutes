@@ -1,0 +1,30 @@
+<!--use template-->
+{% extends "base.html" %} <!--means = this template, be same as base.html + and can overide blocks defined inside base.html-->
+
+<!--Title-->
+{% block title %}Login{% endblock %} <!--title tab of the website-->
+
+<!--Body-->
+{% block content %} <!--All bootstrap classes used are imported in base.html to focus learning on flask and SQlchemy, to change later in free time-->
+<form method = "POST">
+
+    <!--Body heading-->
+    <h3 align = "center">Login</h3>
+
+    <!--Email-->
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
+    </div>
+
+    <!--Password-->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+    </div>
+
+    <br />
+    <button type="login" class="btn btn-primary">Login</button>
+
+</form>
+{% endblock %}

@@ -1,0 +1,116 @@
+<!--base template > website theme-->
+<!-- The following imported bootstrap and javascript templates are not mine and belng to Tech With Tim (https://www.youtube.com/c/TechWithTim)
+    https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css
+     https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
+     https://code.jquery.com/jquery-3.2.1.slim.min.js
+     https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js
+     https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!--Basic html-->
+        <meta charset= "utf-8" />
+        <meta name= "viewport" content="width=device-width, initial-scale=1" />
+        
+        <!--Import bootstrap (Maintains focus on flask, jinja and sqlalchemy)-->
+        <!--replace with personal code later in freetime (current focus on learning new things)-->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+    />
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous"
+    />
+        
+        <title>{% block title %}Base{% endblock %}</title> <!--defining block in base template, that can be overridden in child template-->
+    </head>
+    
+    <body>
+        <!--Navigation bar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!--bootstrap size and colour of navbar-->
+            <!--button - expand navbar when constrained-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"> <!--navbar toggle/collapses to button #=ID target(set in next div)-->
+            <span class="navbar-toggler-icon"></span> <!--icon loaded inside button tag >> we will see icon, on press, will toggle the button-->
+            </button>
+
+            <!--define navigation items in nav bar-->
+            <div class="collapse navbar-collapse" id="navbar"> <!-- sets as collapsable navbar-->
+                <div class="navbar-nav"> <!--div for navigation items-->
+                    {% if user.is_authenticated %} <!-- .is_authenticated = checks logged in status. For purposes of nav bar option visibility -->
+                    <a class="nav-item nav-link" id="Home" href="/">Home</a>
+                    <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+                    {% else %}
+                    <a class="nav-item nav-link" id="login" href="/login">login</a><!--define the items. a = link-->
+                    <a class="nav-item nav-link" id="sign_up" href="/sign_up">Signup</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Flash messages under navbar = success, error ect.. -->
+        <!-- if = display + if error style or if success style. closeable, hidden prior-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alter-dismissable fade show">
+                        {{ message }}
+                        <button type="button" class="close" data-dismissable="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+
+                {% if category == 'success' %}
+                    <div class="alert alert-success alter-dismissable fade show">
+                        {{ message }}
+                        <button type="button" class="close" data-dismissable="alert">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% endif %}
+        {% endwith %}
+
+        <!--Container-->
+        <!--gives body some padding between the navbar and edges-->
+        <div class="container">
+            {% block content%}Base{% endblock%}
+        </div>
+
+        <!--Import javascript related to bootstrap (Maintains focus on flask, jinja and sqlalchemy)-->
+        <!--replace with personal code later in freetime (current focus on learning new things)-->
+        <!--replace notes: put javascript into static folder(29:00= for import script)
+        -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"
+    ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"
+    ></script>
+  
+    <script
+        type="text/javascript"
+        src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+    </body>
+
+</html>
