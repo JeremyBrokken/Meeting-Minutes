@@ -1,2 +1,2 @@
-# Meting-Minutes
+# Meeting-Minutes
 2022 LvL6 Techtorium
