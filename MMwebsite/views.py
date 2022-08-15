@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify #render_template allows to render a template created
 #Goal, define this file is a blueprint, of app = has roots/URLs inside of it
 from flask_login import login_required, current_user
-from . models import Note
+from . models import Minute
 from . import db
 import json
 
@@ -17,8 +17,8 @@ def home():
         if len(note) < 1:
             flash('Minute is too short!', category='error')
         else:
-            new_note = Note(data=note, user_id=current_user.id)
-            db.session.add(new_note)
+            new_minute = Minute(data=note, user_id=current_user.id)
+            db.session.add(new_minute)
             db.session.commit()
             flash('Note added', category='success')
     

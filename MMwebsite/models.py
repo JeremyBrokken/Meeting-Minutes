@@ -5,7 +5,7 @@ from . import db #importing from __init__.py db.[ from . = from this package, an
 from flask_login import UserMixin # first use of module. Custom class inherited to give user object things specific for flask_login
 from sqlalchemy.sql import func #dont need to specify date field. Lets sqlalchemy do it for me. Every new note auto add date for me.
 
-class Note(db.Model): 
+class Minute(db.Model): 
     id = db.Column(db.Integer, primary_key=True) #by default, add new object id, auto selecte[auto increment] = do not need to set
     topic = db.Column(db.String(50))
     date = db.Column(db.DateTime(timezone=True), default=func.now()) #defaults = autodate
