@@ -7,8 +7,14 @@ from sqlalchemy.sql import func #dont need to specify date field. Lets sqlalchem
 
 class Note(db.Model): 
     id = db.Column(db.Integer, primary_key=True) #by default, add new object id, auto selecte[auto increment] = do not need to set
-    data = db.Column(db.String(10000))
+    topic = db.Column(db.String(50))
     date = db.Column(db.DateTime(timezone=True), default=func.now()) #defaults = autodate
+    dateCompletion = db.Column(db.String(10000))
+    raisedBy = db.Column(db.String(50))
+    absentees = db.Column(db.String(100))
+    actionBy = db.Column(db.String(50))
+    required = db.Column(db.String(1000))
+    information  = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) #foreign key relationsip. Must be same [integer]. One to many relationship. Keeps notes to users. ForeignKey = user.id[databasefolder.column]lower case u
 #additional note relationsip trypes are one-to-one, one-to-many and many-to-one. Im using one-to-many =needs relationship key
 

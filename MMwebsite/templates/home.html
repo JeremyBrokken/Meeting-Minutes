@@ -6,9 +6,8 @@
 
 <!--Body-->
 {% block content %}
-<h1 align="center">Note</h1>
-
-    {# Loads all current user notes if any found #}
+<h1 align="center">Meeting Minutes</h1>
+{# Loads all current user notes if any found #}
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
     <li class="list-group-item">
@@ -20,13 +19,64 @@
     {% endfor %}
 </ul>
 
-    {# Note creation area #}
+{# Minutes form #}
 <form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
+    <!--<textarea name="note" id="note" class="form-control"></textarea>-->
+<div class="container" style="margin-top:30px"/>
+<!-- Topic line -->
+    <div class="row">
+        <div class="col-12">
+            <p style= "text-align: left;">Topic</p>
+            <textarea name="topic" id="topic" class="form-control" rows="1"></textarea>
+        </div>
+    </div>
+<!-- Date line -->
+    <div class="row">
+        <div class="col-sm-2">
+            <!--<img src="{{ url_for('static', filename='PFDHUN2MLE.jpg') }}"/>-->
+            <p style= "text-align: left;">Date</p>
+            <textarea name="date" id="date" class="form-control" rows="1"></textarea>
+        </div>
+        <div class="col-sm-2">
+            <p style= "text-align: left;">Date of completion</p>
+            <textarea name="dateCompletion" id="dateCompletion" class="form-control" rows="1"></textarea>
+        </div>
+    </div>
+<!-- People line -->
+    <div class="row">
+        <div class="col-sm-4">
+            <p style= "text-align: left;">Raised by</p>
+            <textarea name="raised" id="raised" class="form-control" rows="1"></textarea>
+        </div>
+        <div class="col-sm-4">
+            <p style= "text-align: left;">Absentees</p>
+            <textarea name="absentees" id="absentees" class="form-control" rows="1"></textarea>
+        </div>
+        <div class="col-sm-4">
+            <p style= "text-align: left;">To be actioned by</p>
+            <textarea name="actionBy" id="actionBy" class="form-control" rows="1"></textarea>
+        </div>
+    </div>
+<!-- Required line -->
+    <div class="row">
+        <div class="col-sm-8">
+            <p style= "text-align: left;">Actions/required</p>
+            <textarea name="required" id="required" class="form-control" rows="1"></textarea>
+        </div>
+    </div>
+<!-- Information line -->
+    <div class="row">
+        <div class="col-sm-12">
+            <p style= "text-align: left;">Subsequent information</p>
+            <textarea name="information" id="information" class="form-control" rows="1"></textarea>
+        </div>
+    </div>
+</div>
+
     <br />
     {# Button = Submit #}
     <div align="center">
-        <button type="submit" class="btn btn-primary">Add Note</button>
+        <button type="submit" class="btn btn-primary">Add Minutes</button>
     </div>
 </form>
 {% endblock %}
