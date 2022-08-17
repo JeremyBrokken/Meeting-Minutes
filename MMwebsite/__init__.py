@@ -22,7 +22,7 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')# same as views
     
     # we import this (models). So we load this file and runs before we initialize and run our database.
-    from .models import User, Note # >> potentially not possible, guy had issues, says he usually does IT THAT WAY THOUGH SO.. >>"import .models as models" = (also works same- in this situation) If done this way "as models" is because can reference starting with a "." ie .models
+    from .models import User, Minute # >> potentially not possible, guy had issues, says he usually does IT THAT WAY THOUGH SO.. >>"import .models as models" = (also works same- in this situation) If done this way "as models" is because can reference starting with a "." ie .models
     
     create_database(app)
     

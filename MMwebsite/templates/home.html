@@ -8,11 +8,11 @@
 {% block content %}
 <h1 align="center">Meeting Minutes</h1>
 {# Loads all current user notes if any found #}
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
+<ul class="list-group list-group-flush" id="minutes">
+    {% for minute in user.minutes %}
     <li class="list-group-item">
-        {{note.data}}
-        <button type="button" class="close" onclick="deleteNote({{note.id}})"> {# onclick"~~" = java send data to backend, [delete note method]#}
+        {{minute.topic, minute.date, minute.dateCompletion, minute.raisedBy, minute.absentees, minute.actionBy, minute.required, minute.information}}
+        <button type="button" class="close" onclick="deleteMinute({{minute.id}})"> {# onclick"~~" = java send data to backend, [delete note method]#}
             <span aria-hidden="True">&times;</span>
         </button>
         </li>
@@ -30,23 +30,22 @@
             <textarea name="topic" id="topic" class="form-control" rows="1"></textarea>
         </div>
     </div>
-<!-- Date line -->
+<!-- Date line
     <div class="row">
-        <div class="col-sm-2">
-            <!--<img src="{{ url_for('static', filename='PFDHUN2MLE.jpg') }}"/>-->
+        <div class="col-sm-2">       
             <p style= "text-align: left;">Date</p>
             <textarea name="date" id="date" class="form-control" rows="1"></textarea>
-        </div>
+        </div> -->
         <div class="col-sm-2">
             <p style= "text-align: left;">Date of completion</p>
             <textarea name="dateCompletion" id="dateCompletion" class="form-control" rows="1"></textarea>
         </div>
     </div>
-<!-- People line -->
+ <!-- People line -->
     <div class="row">
         <div class="col-sm-4">
             <p style= "text-align: left;">Raised by</p>
-            <textarea name="raised" id="raised" class="form-control" rows="1"></textarea>
+            <textarea name="raisedBy" id="raisedBy" class="form-control" rows="1"></textarea>
         </div>
         <div class="col-sm-4">
             <p style= "text-align: left;">Absentees</p>

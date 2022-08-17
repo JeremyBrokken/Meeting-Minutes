@@ -1,7 +1,7 @@
 //vanilla javascript. active
-function deleteNote(noteId)
+function deleteMinute(minuteId)
 {
-    fetch("/delete-note",
-    {method: "POST", body: JSON.stringify({ noteId: noteId}),})
+    fetch("/delete-minute",
+    {method: "POST", body: JSON.stringify({ minuteId: minuteId}),})
     .then((_res) => {window.location.href= "/";});
 }   

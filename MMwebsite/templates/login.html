@@ -9,22 +9,24 @@
 <form method = "POST">
 
     <!--Body heading-->
-    <h3 align = "center">Login</h3>
+    <h1 align = "center" style="margin-top:10px">Login</h1>
 
     <!--Email-->
-    <div class="form-group">
+    <div class="form-group" style="padding-left:100px;padding-right:100px;">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
     </div>
 
     <!--Password-->
-    <div class="form-group">
+    <div class="form-group" style="padding-left:100px;padding-right:100px;>
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
     </div>
 
     <br />
+    <div align="center">
     <button type="login" class="btn btn-primary">Login</button>
+    </div>
 
 </form>
 {% endblock %}

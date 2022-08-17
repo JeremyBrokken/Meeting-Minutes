@@ -9,7 +9,7 @@ class Minute(db.Model):
     id = db.Column(db.Integer, primary_key=True) #by default, add new object id, auto selecte[auto increment] = do not need to set
     topic = db.Column(db.String(50))
     date = db.Column(db.DateTime(timezone=True), default=func.now()) #defaults = autodate
-    dateCompletion = db.Column(db.String(10000))
+    dateCompletion = db.Column(db.String(10000)) #to adjust to date later
     raisedBy = db.Column(db.String(50))
     absentees = db.Column(db.String(100))
     actionBy = db.Column(db.String(50))
@@ -24,4 +24,4 @@ class User(db.Model, UserMixin): # inherit from db.Model + user object only inhe
     email = db.Column(db.String(150), unique=True) #cannot create another user with the same email
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
-    notes = db.relationship('Note') # tells flask and sqlalchemy = add to this relationship Notes id. relationship capitol N
+    minutes = db.relationship('Minute') # tells flask and sqlalchemy = add to this relationship Notes id. relationship capitol N
